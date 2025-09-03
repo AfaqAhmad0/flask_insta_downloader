@@ -4,6 +4,11 @@ import instaloader
 app = Flask(__name__)
 L = instaloader.Instaloader()
 
+@app.route("/", methods=["GET"])
+def index():
+    return "Instagram Video Downloader API is running. Use POST /get_video_link with JSON {'url': '<Instagram URL>'}."
+
+
 @app.route('/get_video_link', methods=['POST'])
 def get_video_link():
     data = request.get_json()
